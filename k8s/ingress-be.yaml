@@ -1,18 +1,18 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: confighub-be-ingress
+  name: helmscratch-be-ingress
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-  - host: confighub.lan
+  - host: helmscratch.lan
     http:
       paths:
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: confighub-be-service
+            name: helmscratch-be-service
             port:
               number: 80
