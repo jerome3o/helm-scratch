@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: confighub-deployment
+  labels:
+    app: confighub
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: confighub
+  template:
+    metadata:
+      labels:
+        app: confighub
+    spec:
+      containers:
+      - name: confighub
+        image: jerome3o/scratch:0.0.1
+        ports:
+        - containerPort: 8000
+        env:
+          # Move to configmap?
+        - name: DB_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: confighub-configmap
+              key: DB_HOST
+              
+        - name: DB_USER
+          valueFrom:
+            configMapKeyRef:
+              name: confighub-configmap
+              key: DB_USER
+              
+        - name: DB_PASSWORD
+          valueFrom:
+            configMapKeyRef:
+              name: confighub-configmap
+              key: DB_PASSWORD
+              
+        - name: DB_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: confighub-configmap
+              key: DB_PORT
+              
