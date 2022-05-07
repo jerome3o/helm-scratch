@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: helmscratch-be-deployment
+  labels:
+    app: helmscratch
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: helmscratch
+  template:
+    metadata:
+      labels:
+        app: helmscratch
+    spec:
+      containers:
+      - name: helmscratch
+        image: jerome3o/scratch:0.0.1
+        ports:
+        - containerPort: 8000
+        envFrom:
+        - configMapRef:
+            name: helmscratch-be-configmap
+
