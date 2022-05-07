@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: confighub-configmap
+  name: confighub-be-configmap
 data:
-  DB_HOST: "192.168.1.250"
+  DB_HOST: "confighub-db-service"
   DB_USER: "postgres"
-  DB_PASSWORD: "secretpassword" # TODO make actual secret
+  DB_PASSWORD: "admin" # TODO make actual secret
   DB_PORT: "5432"

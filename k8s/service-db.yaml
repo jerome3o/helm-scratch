@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: confighub-db-service
+spec:
+  selector:
+    app: confighub-db
+  type: ClusterIP
+  ports:
+    - port: 5432
+      targetPort: 5432
+      protocol: TCP
+      name: postgres

@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: confighub-db-statefulset
+  labels:
+    app: confighub-db
+spec:
+  serviceName: confighub-db
+  replicas: 1
+  selector:
+    matchLabels:
+      app: confighub-db
+  template:
+    metadata:
+      labels:
+        app: confighub-db
+    spec:
+      containers:
+        - name: confighub-db
+          image: postgres:10
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5432
+          envFrom:
+          - configMapRef:
+              name: confighub-db-configmap
+    # TODO(j.swannack): need to figure out how the persistent volumes etc work
+          
