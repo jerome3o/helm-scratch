@@ -1,13 +1,13 @@
-apiVersion: v1
-kind: Service
-metadata:
-  name: helmscratch-db-service
-spec:
-  selector:
-    app: helmscratch-db
-  type: ClusterIP
-  ports:
-    - port: 5432
-      targetPort: 5432
-      protocol: TCP
-      name: postgres
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: helmscratch-db-service
+# spec:
+#   selector:
+#     app: helmscratch-db
+#   type: ClusterIP
+#   ports:
+#     - port: 5432
+#       targetPort: 5432
+#       protocol: TCP
+#       name: postgres

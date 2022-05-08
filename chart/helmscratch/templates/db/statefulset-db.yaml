@@ -1,28 +1,28 @@
-apiVersion: apps/v1
-kind: StatefulSet
-metadata:
-  name: helmscratch-db-statefulset
-  labels:
-    app: helmscratch-db
-spec:
-  serviceName: helmscratch-db
-  replicas: 1
-  selector:
-    matchLabels:
-      app: helmscratch-db
-  template:
-    metadata:
-      labels:
-        app: helmscratch-db
-    spec:
-      containers:
-        - name: helmscratch-db
-          image: postgres:10
-          imagePullPolicy: IfNotPresent
-          ports:
-            - containerPort: 5432
-          envFrom:
-          - configMapRef:
-              name: helmscratch-db-configmap
-    # TODO(j.swannack): need to figure out how the persistent volumes etc work
+# apiVersion: apps/v1
+# kind: StatefulSet
+# metadata:
+#   name: helmscratch-db-statefulset
+#   labels:
+#     app: helmscratch-db
+# spec:
+#   serviceName: helmscratch-db
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: helmscratch-db
+#   template:
+#     metadata:
+#       labels:
+#         app: helmscratch-db
+#     spec:
+#       containers:
+#         - name: helmscratch-db
+#           image: postgres:10
+#           imagePullPolicy: IfNotPresent
+#           ports:
+#             - containerPort: 5432
+#           envFrom:
+#           - configMapRef:
+#               name: helmscratch-db-configmap
+#     # TODO(j.swannack): need to figure out how the persistent volumes etc work
           
